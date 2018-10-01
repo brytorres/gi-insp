@@ -16,6 +16,10 @@
     border: rgba(112, 174, 110, 1) 3px dashed;
     border-radius: 5px;
 
+    &:hover {
+      background: rgba(170, 170, 170, 0.1)
+    }
+
     p {
       color: $gi-blue;
       font-size: 24px;
