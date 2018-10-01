@@ -4,14 +4,14 @@ import './Header.css';
 class Header extends Component{
   render() {
 		return (
-			<header>
-        <h2>Gif Inspector</h2>
-        <div className="nav">
+			<div className="nav">
+        <h2><a href="/">Gif Inspector</a></h2>
+        <div className="nav-menu">
           <a href="/about">About</a>
           <a href="/guide">Guide</a>
-          <a href="/about">Contact</a>
+          <a href="/contact">Contact</a>
         </div>
-      </header>
+      </div>
 		);
   }
 }

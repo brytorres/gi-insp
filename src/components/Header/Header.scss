@@ -1,0 +1,49 @@
+@import '../../variables';
+
+.nav {
+  background: $gi-blue;
+  display: flex;
+  width: 100%;
+
+  h2 {
+    color: $gi-slime;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 10px;
+
+    a {
+      color: $gi-slime;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0 10px;
+
+      &:hover {
+        color: $gi-green;
+      }
+
+    }
+
+  }
+
+  .nav-menu {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      color: $gi-slime;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0 10px;
+
+      &:hover {
+        color: $gi-green;
+      }
+
+    }
+
+  }
+
+}
