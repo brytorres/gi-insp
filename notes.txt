@@ -1,0 +1,15 @@
+// TODO
+- Learn dropzone stuff
+- Learn localstorage stuff
+- Add gif frames lib
+
+// Inspector
+- Tools
+    invert colors
+    
+
+- Viewbox
+
+- Frame view
+
+- Player controls
