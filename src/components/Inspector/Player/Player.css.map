@@ -1,9 +1,11 @@
 {
     "version": 3,
-    "mappings": "AAAA,AACE,OADK,CACL,SAAS,AAAC,CACR,UAAU,CAAE,KAAK,CACjB,KAAK,CAAE,KAAK,CACZ,MAAM,CAAE,KAAK,CACb,MAAM,CAAE,MAAM,CACf",
+    "mappings": "AACA,AAAA,OAAO,AAAC,CACN,KAAK,CAAE,KAAK,CACZ,MAAM,CAAE,KAAK,CACb,MAAM,CAAE,MAAM,CAaf,AAhBD,AAKE,OALK,CAKL,SAAS,AAAC,CACR,UAAU,CAAE,KAAK,CACjB,MAAM,CAAE,KAAK,CACd,AARH,AASE,OATK,CASL,kBAAkB,AAAC,CACjB,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CACZ,UAAU,CEZJ,OAAqB,CFa3B,yBAAyB,CAAE,GAAG,CAC9B,0BAA0B,CAAE,GAAG,CAChC",
     "sources": [
-        "Viewport.scss"
+        "Player.scss",
+        "../../../_variables.scss",
+        "../../../_palette.scss"
     ],
     "names": [],
-    "file": "Viewport.css"
+    "file": "Player.css"
 }
