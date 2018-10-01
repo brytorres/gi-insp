@@ -1,4 +1,12 @@
 /*
  * COLORS
  * * * * */
-@import './palette.scss'
+@import './palette.scss';
+
+/*
+ * FONTS
+ * * * * */
+@import url('https://fonts.googleapis.com/css?family=Bai+Jamjuree:200,300,400|Nunito:300,400,900');
+
+$bai: 'Bai Jamjuree', sans-serif;
+$nuni: 'Nunito', sans-serif;

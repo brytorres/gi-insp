@@ -1,8 +1,10 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,IAAI,AAAC,CACH,MAAM,CAAE,KAAK,CACb,MAAM,CAAE,CAAC,CACT,OAAO,CAAE,CAAC,CACV,WAAW,CAAE,UAAU,CACvB,UAAU,CAAE,OAAmB,CAChC",
+    "mappings": "ACQA,OAAO,CAAC,0FAAI,CDNZ,AAAA,IAAI,AAAC,CACH,MAAM,CAAE,KAAK,CACb,MAAM,CAAE,CAAC,CACT,OAAO,CAAE,CAAC,CACV,WAAW,CCKN,QAAQ,CAAE,UAAU,CDJzB,UAAU,CAAE,OAAmB,CAChC",
     "sources": [
-        "index.scss"
+        "index.scss",
+        "_variables.scss",
+        "_palette.scss"
     ],
     "names": [],
     "file": "index.css"
