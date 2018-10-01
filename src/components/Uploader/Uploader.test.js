@@ -7,3 +7,8 @@ it('Uploader renders', () => {
   ReactDOM.render(<Uploader />, uploader);
   ReactDOM.unmountComponentAtNode(uploader);
 });
+
+// it.only('Grab GIF from URL', () => {
+//   const url = 'https://media2.giphy.com/media/l3vRfhFD8hJCiP0uQ/giphy.gif';
+
+// });

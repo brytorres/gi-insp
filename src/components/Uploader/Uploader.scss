@@ -34,12 +34,18 @@
       
     }
 
+    form p{
+        font-size: 12px;
+      }
+
     .upload-url {
       width: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+
+      
       
       input {
         width: 100%;
