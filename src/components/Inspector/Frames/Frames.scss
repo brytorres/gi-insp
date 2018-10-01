@@ -1,0 +1,16 @@
+.frames {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  padding: 60px 0px;
+
+  .frame {
+    background: black;
+    color: #888;
+    text-align: center;
+    width: 15%;
+    height: 70px;
+    padding: 10px;
+  }
+}
