@@ -1,0 +1,34 @@
+@import '../../variables';
+
+.uploader {
+  padding: 40px;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+
+  .dropzone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 500px;
+    border: rgba(112, 174, 110, 1) 3px dashed;
+
+    p {
+      color: darken($light, 30%);
+      font-size: 24px;
+    }
+
+    .upload-url {
+
+      input {
+        width: 100%;
+      }
+
+      .btn-upload {
+        
+      }
+    }
+  }
+}
