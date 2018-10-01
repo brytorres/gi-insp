@@ -12,7 +12,7 @@ class Uploader extends Component {
           <p>or</p>
 
           <div className="upload-url">
-            <input type="text" name="upload" id="upload" placeholder="Enter GIF URL" />
+            <input type="text" name="upload" id="upload" placeholder="Paste GIF URL Here" />
             <br />
             <button className="btn-upload">UPLOAD</button>
           </div>
