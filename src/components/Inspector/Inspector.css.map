@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,AAAC,CACT,UAAU,CAAE,sBAAyB,CACrC,MAAM,CAAE,KAAK,CACb,KAAK,CAAE,GAAG,CACV,MAAM,CAAE,UAAU,CACnB",
+    "sources": [
+        "Inspector.scss"
+    ],
+    "names": [],
+    "file": "Inspector.css"
+}
