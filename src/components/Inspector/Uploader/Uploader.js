@@ -18,9 +18,6 @@ class Uploader extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleInspect = this.handleInspect.bind(this);
     this.removeUploader = this.removeUploader.bind(this);
-    this.removeLoader = this.removeLoader.bind(this);
-    this.getGifFrames = this.getGifFrames.bind(this);
-    this.test = this.test.bind(this);
   }
   
   handleChange(event) {
@@ -28,36 +25,23 @@ class Uploader extends Component {
   }
   
   handleInspect(event) {
-    this.getGifFrames(this.state.gifUrl);
+    const url = this.state.gifUrl
+    
+    this.removeUploader();
+
+    gifFrames({ url: url, frames: 'all', outputType: 'png' })
+      .then((frameData) => {
+        // console.log(frameData);
+        this.setState({ removeLoader: true });
+        this.setState({ frames: frameData })
+      }).catch(console.error.bind(console));
+
     event.preventDefault();
   }
   
   removeUploader() {
     this.setState({ removeUploader: true });
     this.setState({ loading: true });
-  }
-
-  removeLoader() {
-    this.setState({ removeLoader: true });
-  }
-
-  test() {
-    alert('Test')
-  }
-  
-  getGifFrames = (url) => {
-    this.removeUploader();
-    gifFrames({ url: url, frames: 'all', outputType: 'png' })
-      .then(function (frameData) {
-        console.table(frameData);
-        // this.setState({ frames: frameData })
-        // this.removeLoader();
-        
-      });
-      // this.test();
-    // setTimeout(() => {
-
-    // <Player />
   }
 
   render() {
@@ -72,49 +56,45 @@ class Uploader extends Component {
     if(removeUploader) {
 
       inspector = 
-        <div className="dropzone">
-          <Loader
-            type="Triangle"
-            color="#00BFFF"
-            height="200"
-            width="200"
-          />
-          <h3>Electrons are analyzing the GIF. Please Wait...</h3>
+        <div className="uploader">
+          <div className="dropzone">
+            <Loader
+              type="Triangle"
+              color="#00BFFF"
+              height="200"
+              width="200"
+            />
+            <h3>Electrons are analyzing the GIF. Please Wait...</h3>
+          </div>
         </div>
 
     } else {
 
       inspector = 
-        <div className="dropzone">
-          <p>Drop Your GIF Here</p>
+        <div className="uploader">
+          <div className="dropzone">
+            <p>Drop Your GIF Here</p>
 
-          <p>or</p>
+            <p>or</p>
 
-          <form onSubmit={this.handleInspect} className="upload-url">
-            <p>https://media2.giphy.com/media/l3vRfhFD8hJCiP0uQ/giphy.gif</p>
-            <input type="text" name="upload" id="upload" placeholder="Paste GIF URL Here" value={this.state.value} onChange={this.handleChange} />
-            <input className="btn-upload" type="submit" value="INSPECT" />
-          </form>
+            <form onSubmit={this.handleInspect} className="upload-url">
+              <p>https://media2.giphy.com/media/l3vRfhFD8hJCiP0uQ/giphy.gif</p>
+              <input type="text" name="upload" id="upload" placeholder="Paste GIF URL Here" value={this.state.value} onChange={this.handleChange} />
+              <input className="btn-upload" type="submit" value="INSPECT" />
+            </form>
+          </div>
         </div>
-
     }
 
-    // Remove uploader and spinner when GIF processing is complete
+    // Remove uploader + spinner when GIF processing is complete, then render Inspector
     if(removeLoader) {
       inspector = 
         <Inspector
           frames = {frames} />
     }
 
-    // Render inspector when upload is complete
-    // if(showInspector) {
-    //   inspector = 
-    //     <Inspector 
-    //       frames = 
-    // }
-
     return (
-      <div className="uploader">
+      <div>
           {inspector}
       </div>
     );
