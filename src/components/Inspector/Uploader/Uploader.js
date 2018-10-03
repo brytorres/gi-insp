@@ -10,7 +10,7 @@ class Uploader extends Component {
     super(props);
     this.state = {
       gifUrl: '',
-      frames: {},
+      frames: [],
       removeUploader: false,
       removeLoader: false
     };
@@ -29,11 +29,20 @@ class Uploader extends Component {
     
     this.removeUploader();
 
-    gifFrames({ url: url, frames: 'all', outputType: 'png' })
+    gifFrames({ url: url, frames: 'all', outputType: 'jpg' })
       .then((frameData) => {
         // console.log(frameData);
-        this.setState({ removeLoader: true });
-        this.setState({ frames: frameData })
+        let tempFrames = [];
+        frameData.forEach(frame => {
+          tempFrames.push(frame.getImage())
+        });
+        // console.log(tempFrames);
+        setTimeout(() => {
+          this.setState({ frames: tempFrames })
+          this.setState({ removeLoader: true });
+          
+        }, 2000);
+
       }).catch(console.error.bind(console));
 
     event.preventDefault();
@@ -60,7 +69,7 @@ class Uploader extends Component {
           <div className="dropzone">
             <Loader
               type="Triangle"
-              color="#00BFFF"
+              color="#3c6e71"
               height="200"
               width="200"
             />
@@ -78,7 +87,7 @@ class Uploader extends Component {
             <p>or</p>
 
             <form onSubmit={this.handleInspect} className="upload-url">
-              <p>https://media2.giphy.com/media/l3vRfhFD8hJCiP0uQ/giphy.gif</p>
+              {/* <p>https://media2.giphy.com/media/l3vRfhFD8hJCiP0uQ/giphy.gif</p> */}
               <input type="text" name="upload" id="upload" placeholder="Paste GIF URL Here" value={this.state.value} onChange={this.handleChange} />
               <input className="btn-upload" type="submit" value="INSPECT" />
             </form>

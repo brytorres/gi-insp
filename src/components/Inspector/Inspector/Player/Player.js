@@ -3,16 +3,27 @@ import './Player.css';
 
 class Player extends Component {
   constructor(props) {
-    super(props);
+    super(props)
+
+    this.processFrameData = this.processFrameData.bind(this);
   }
 
+  processFrameData(frame) {
+    var arrayBufferView = new Uint8Array(frame['_obj']);
+    var blob = new Blob([arrayBufferView], { type: "image/jpeg" });
+    var urlCreator = window.URL || window.webkitURL;
+    var imageUrl = urlCreator.createObjectURL(blob);
+    return imageUrl
+  }
+  
   render() {
-    // const frames = this.props.frames
+    const frames = this.props.frames
+    const img = this.processFrameData(frames[0])
 
     return (
       <div className="player">
         <div className="viewport">
-          {/* {frames} */}
+            <img src={img} alt=""/>
         </div>
         <div className="playback-controls"></div>
       </div>

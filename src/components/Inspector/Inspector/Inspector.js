@@ -4,22 +4,15 @@ import Frames from './Frames/Frames';
 import './Inspector.css'
 
 class Inspector extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
-    const frames = this.props.frames
-    console.log(frames)
     
     return(
       <div className="inspector">
-        {/* <Player
-          frames={frames} />
-        <Frames 
-          frames={frames} /> */}
-        <Player />
-        <Frames  />
+        <Player
+          frames={this.props.frames} />
+        <Frames
+          frames={this.props.frames} />
       </div>
       
     );
