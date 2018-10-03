@@ -69,14 +69,14 @@ class Uploader extends Component {
 
     }).catch((error) => {
         console.log(error);
-        this.setState({ error: error.toString()});
+        this.setState({ error: error.toString(),
+                        removeUploader: false,
+                        loading: false
+                      });
         setTimeout(() => {
           this.setState({ error: '' });
         }, 5000);
-      },
-        this.setState({ removeUploader: false }),
-        this.setState({ loading: false })
-      );
+      });
 
     event.preventDefault();
   }
