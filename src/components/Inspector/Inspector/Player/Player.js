@@ -18,8 +18,7 @@ class Player extends Component {
   
   render() {
     const frames = this.props.frames
-    const img = this.processFrameData(frames[1])
-    console.log(typeof this.props.width);
+    const img = this.processFrameData(frames[0])
     const viewportDimensions = {
       width: this.props.width,
       height: this.props.height
