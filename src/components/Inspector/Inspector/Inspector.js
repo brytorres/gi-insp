@@ -6,17 +6,15 @@ import './Inspector.css'
 class Inspector extends Component {
 
   render() {
-    
     return(
       <div className="inspector">
         <Player
           frames = {this.props.frames}
-          width = {this.props.width}
+          width  = {this.props.width}
           height = {this.props.height} />
         <Frames
           frames = {this.props.frames} />
       </div>
-      
     );
   }
 }

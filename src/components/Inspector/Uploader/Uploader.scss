@@ -1,11 +1,9 @@
 @import '../../../variables';
-
 .uploader {
   padding: 100px;
   width: 60%;
   margin: 0 auto;
   display: flex;
-
   .dropzone {
     display: flex;
     justify-content: center;
@@ -15,42 +13,31 @@
     height: 500px;
     border: rgba(112, 174, 110, 1) 3px dashed;
     border-radius: 5px;
-
     &:hover {
       background: rgba(170, 170, 170, 0.1)
     }
-
     h3 {
       color: #444;
     }
-
     p {
       color: $gi-blue;
       font-size: 24px;
-
       &:first-child {
         margin-bottom: 0px;
       }
-
-      &:nth-child(2){
+      &:nth-child(2) {
         margin-bottom: 35px;
       }
-      
     }
-
-    form p{
-        font-size: 12px;
-      }
-
+    form p {
+      font-size: 12px;
+    }
     .upload-url {
       width: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-
-      
-      
       input {
         width: 100%;
         height: 24px;
@@ -59,7 +46,6 @@
         border-radius: 3px;
         padding: 5px;
       }
-
       .btn-upload {
         margin-top: 20px;
         width: 140px;
@@ -71,7 +57,6 @@
         font-size: 20px;
         font-weight: 200;
         letter-spacing: 1px;
-
         &:hover {
           background: rgba(60, 110, 113, 0.7);
           cursor: pointer;
@@ -79,4 +64,16 @@
       }
     }
   }
+}
+
+.error {
+  background: rgba(255, 50, 50, 0.5);
+  border: red 1px solid;
+  border-radius: 5px;
+  width: 58%;
+  margin: 0 auto;
+  position: absolute;
+  top: 80px;
+  left: 214px;
+  padding: 10px;
 }

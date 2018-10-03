@@ -14,18 +14,27 @@ class Uploader extends Component {
       width: 0,
       height: 0,
       removeUploader: false,
-      removeLoader: false
+      removeLoader: false,
+      error: ''
     };
     
-    this.handleChange = this.handleChange.bind(this);
+    this.handleUrlSubmit = this.handleUrlSubmit.bind(this);
     this.handleInspect = this.handleInspect.bind(this);
     this.removeUploader = this.removeUploader.bind(this);
   }
   
-  handleChange(event) {
+  // Handle URL submission
+  handleUrlSubmit(event) {
     this.setState({ gifUrl: event.target.value });
   }
   
+  // Remove Uploader and set to loading state
+  removeUploader() {
+    this.setState({ removeUploader: true });
+    this.setState({ loading: true });
+  }
+
+  // Handle initial GIF inspection
   handleInspect(event) {
     const url = this.state.gifUrl
     
@@ -35,7 +44,6 @@ class Uploader extends Component {
     gifFrames({ url: url, frames: 'all', outputType: 'canvas' })
       .then((sizeData) => {
         const canvas = sizeData[0].getImage();
-
 
         this.setState({
           width: parseInt(canvas.attributes[0].value),
@@ -53,20 +61,31 @@ class Uploader extends Component {
           tempFrames.push(frame.getImage())
         });
 
+        // TODO - find cleaner way to display loading for reasonable time
         setTimeout(() => {
           this.setState({ frames: tempFrames })
           this.setState({ removeLoader: true });
         }, 2000);
 
-      }).catch(console.error.bind(console));
+      // }).catch(function (error) {
+      //   console.log(error.toString());
+      //   this.setState({ removeUploader: false });
+      //   this.setState({ loading: false });
+      // });
+    }).catch((error) => {
+        console.log(error.toString());
+        this.setState({ error: error.toString()});
+        setTimeout(() => {
+          this.setState({ error: '' });
+        }, 5000);
+      },
+        this.setState({ removeUploader: false }),
+        this.setState({ loading: false })
+      );
 
     event.preventDefault();
   }
   
-  removeUploader() {
-    this.setState({ removeUploader: true });
-    this.setState({ loading: true });
-  }
 
   render() {
 
@@ -103,7 +122,7 @@ class Uploader extends Component {
 
             <form onSubmit={this.handleInspect} className="upload-url">
               {/* <p>https://media2.giphy.com/media/l3vRfhFD8hJCiP0uQ/giphy.gif</p> */}
-              <input type="text" name="upload" id="upload" placeholder="Paste GIF URL Here" value={this.state.value} onChange={this.handleChange} />
+              <input type="text" name="upload" id="upload" placeholder="Paste GIF URL Here" value={this.state.value} onChange={this.handleUrlSubmit} />
               <input className="btn-upload" type="submit" value="INSPECT" />
             </form>
           </div>
@@ -123,9 +142,22 @@ class Uploader extends Component {
           height = {height} />
     }
 
+    const error = this.state.error
+    let errorAlert;
+
+    if(error) {
+      errorAlert = 
+        <div className="error">
+          {error}
+        </div>
+    } else {
+      errorAlert = ''
+    }
+
 
     return (
       <div>
+          {errorAlert}
           {inspector}
       </div>
     );
