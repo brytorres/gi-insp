@@ -10,9 +10,11 @@ class Inspector extends Component {
     return(
       <div className="inspector">
         <Player
-          frames={this.props.frames} />
+          frames = {this.props.frames}
+          width = {this.props.width}
+          height = {this.props.height} />
         <Frames
-          frames={this.props.frames} />
+          frames = {this.props.frames} />
       </div>
       
     );

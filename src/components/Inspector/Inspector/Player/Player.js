@@ -18,14 +18,19 @@ class Player extends Component {
   
   render() {
     const frames = this.props.frames
-    const img = this.processFrameData(frames[0])
+    const img = this.processFrameData(frames[1])
+    console.log(typeof this.props.width);
+    const viewportDimensions = {
+      width: this.props.width,
+      height: this.props.height
+    };
 
     return (
       <div className="player">
-        <div className="viewport">
+        <div className="viewport" style={viewportDimensions}>
             <img src={img} alt=""/>
         </div>
-        <div className="playback-controls"></div>
+        {/* <div className="playback-controls"></div> */}
       </div>
     );
   }

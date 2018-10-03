@@ -11,6 +11,8 @@ class Uploader extends Component {
     this.state = {
       gifUrl: '',
       frames: [],
+      width: 0,
+      height: 0,
       removeUploader: false,
       removeLoader: false
     };
@@ -29,18 +31,31 @@ class Uploader extends Component {
     
     this.removeUploader();
 
+    // Get GIF Dimensions
+    gifFrames({ url: url, frames: 'all', outputType: 'canvas' })
+      .then((sizeData) => {
+        const canvas = sizeData[0].getImage();
+
+
+        this.setState({
+          width: parseInt(canvas.attributes[0].value),
+          height: parseInt(canvas.attributes[1].value)
+        })
+      })
+
+    // Get GIF Frames as JPG
     gifFrames({ url: url, frames: 'all', outputType: 'jpg' })
       .then((frameData) => {
-        // console.log(frameData);
+        
         let tempFrames = [];
+
         frameData.forEach(frame => {
           tempFrames.push(frame.getImage())
         });
-        // console.log(tempFrames);
+
         setTimeout(() => {
           this.setState({ frames: tempFrames })
           this.setState({ removeLoader: true });
-          
         }, 2000);
 
       }).catch(console.error.bind(console));
@@ -95,12 +110,19 @@ class Uploader extends Component {
         </div>
     }
 
+    // Get image dimensions
+    const width = this.state.width;
+    const height = this.state.height;
+
     // Remove uploader + spinner when GIF processing is complete, then render Inspector
     if(removeLoader) {
       inspector = 
         <Inspector
-          frames = {frames} />
+          frames = {frames}
+          width = {width}
+          height = {height} />
     }
+
 
     return (
       <div>
