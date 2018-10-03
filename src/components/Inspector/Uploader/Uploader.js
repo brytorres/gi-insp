@@ -61,19 +61,14 @@ class Uploader extends Component {
           tempFrames.push(frame.getImage())
         });
 
-        // TODO - find cleaner way to display loading for reasonable time
+        // TODO - find cleaner way to display loading for reasonable amount of time
         setTimeout(() => {
           this.setState({ frames: tempFrames })
           this.setState({ removeLoader: true });
         }, 2000);
 
-      // }).catch(function (error) {
-      //   console.log(error.toString());
-      //   this.setState({ removeUploader: false });
-      //   this.setState({ loading: false });
-      // });
     }).catch((error) => {
-        console.log(error.toString());
+        console.log(error);
         this.setState({ error: error.toString()});
         setTimeout(() => {
           this.setState({ error: '' });
@@ -86,7 +81,6 @@ class Uploader extends Component {
     event.preventDefault();
   }
   
-
   render() {
 
     // Set loader variables
@@ -97,7 +91,6 @@ class Uploader extends Component {
 
     // Check whether to show uploader to loading spinner  
     if(removeUploader) {
-
       inspector = 
         <div className="uploader">
           <div className="dropzone">
@@ -110,9 +103,7 @@ class Uploader extends Component {
             <h3>Electrons are analyzing the GIF. Please Wait...</h3>
           </div>
         </div>
-
     } else {
-
       inspector = 
         <div className="uploader">
           <div className="dropzone">
@@ -142,18 +133,18 @@ class Uploader extends Component {
           height = {height} />
     }
 
+    // Handle gifFrames Error Alert
     const error = this.state.error
     let errorAlert;
 
     if(error) {
       errorAlert = 
         <div className="error">
-          {error}
+          {error}. Please try again.
         </div>
     } else {
       errorAlert = ''
     }
-
 
     return (
       <div>
